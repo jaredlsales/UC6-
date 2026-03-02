@@ -1,21 +1,41 @@
 import { Container, Form, Button, Image } from 'react-bootstrap';
+import { useState } from "react"
+import apiLocal from '../api/apiLocal';
 
 export default function Login() {
+  
+  const [email, setEmail] = useState("")
+  const [senha, setSenha] = useState("")
+  
+  //e.preventDefault = ele protege o que foi escrito no formulario e não apaga o campo 
+  async function logarBackEnd(e) {
+    e.preventDefault();
+    try {
+      const resposta = await apiLocal.post("/LoginFuncioarios", {
+        email,
+        senha
+      })
+      console.log(resposta)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     /* Centraliza o formulário na tela vertical e horizontalmente */
     <Container className="d-flex align-items-center justify-content-center vh-100">
       <div className="w-100" style={{ maxWidth: '330px', padding: '15px' }}>
         
-        <Form className="text-center">
+        <Form onSubmit={logarBackEnd} className="text-center">
 
           <h1 className="h3 mb-3 fw-normal">Por favor, faça login</h1>
           <Form.Group className="form-floating mb-2" controlId="floatingInput">
-            <Form.Control type="email" placeholder="nome@exemplo.com" />
+            <Form.Control type="email" placeholder="nome@exemplo.com" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete="username"/>
             <Form.Label>E-mail</Form.Label>
           </Form.Group>
 
           <Form.Group className="form-floating mb-3" controlId="floatingPassword">
-            <Form.Control type="password" placeholder="Senha" />
+            <Form.Control type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} autoComplete="current-password" />
             <Form.Label>Senha</Form.Label>
           </Form.Group>
 
