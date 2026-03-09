@@ -28,6 +28,7 @@ export default function CabecalhoA() {
                         Login
                     </Link>
                     <button type="button" class="btn btn-primary">Sign-up</button>
+                    <button type="button" class="btn btn-outline-primary me-2">Out-Sair</button>
                 </div>
 
             </header>

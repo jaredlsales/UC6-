@@ -1,21 +1,22 @@
 import { Container, Form, Button, Image } from 'react-bootstrap';
-import { useState } from "react"
-import apiLocal from '../api/apiLocal';
+import { useState, useContext } from "react"
+import {AutenticadoContexto} from "../Contexts/AuthContexts"
+
 
 export default function Login() {
+
+  const {LoginFuncionarios} = useContext(AutenticadoContexto)
   
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
   
   //e.preventDefault = ele protege o que foi escrito no formulario e não apaga o campo 
   async function logarBackEnd(e) {
-    e.preventDefault();
+    console.log(email,senha)
     try {
-      const resposta = await apiLocal.post("/LoginFuncioarios", {
-        email,
-        senha
-      })
-      console.log(resposta)
+      e.preventDefault();
+      await LoginFuncionarios(email,senha)
+      
     } catch (err) {
       console.log(err)
     }
