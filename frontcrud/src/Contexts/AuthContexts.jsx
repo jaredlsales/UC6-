@@ -44,9 +44,35 @@ export default function AuthProvider({children}) {
         }
     }
 
+    async function verificaToken () {
+        const iToken = localStorage.getItem("@token")
+        if(!iToken){
+            setTokenT(false)
+            //return e para eão contuinuar fazer as autenticaficação
+            return
+        }
+
+        //convertento String para JSON o token -- tokenU e eum nome generico
+        const tokenU = JSON.parse(iToken)
+        setToken(tokenU)
+
+        try {
+            const resposta =  await apiLocal.get("/VerificaToken", {
+                headers:{
+                    // Bearer e o nome do JSON que está no insominia
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            console.log(resposta)
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
     return(
         // exportar value={({LoginFuncionarios})}
-        <AutenticadoContexto.Provider value={({LoginFuncionarios, autenticado})}>
+        <AutenticadoContexto.Provider value={({LoginFuncionarios, autenticado, verificaToken})}>
             {children}
         </AutenticadoContexto.Provider>
     )
