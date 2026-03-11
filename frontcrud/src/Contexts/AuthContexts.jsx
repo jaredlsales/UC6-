@@ -48,7 +48,7 @@ export default function AuthProvider({children}) {
         const iToken = localStorage.getItem("@token")
         if(!iToken){
             setTokenT(false)
-            //return e para eão contuinuar fazer as autenticaficação
+            //return e para não contuinuar fazer as autenticaficação
             return
         }
 
@@ -63,7 +63,9 @@ export default function AuthProvider({children}) {
                     Authorization: `Bearer ${token}`
                 }
             })
-            console.log(resposta)
+            if (resposta.data.id){
+                setTokenT(true)
+            }
         } catch (err) {
             console.log(err)
         }
@@ -71,7 +73,7 @@ export default function AuthProvider({children}) {
     }
 
     return(
-        // exportar value={({LoginFuncionarios})}
+        // exportando value={({LoginFuncionarios})}
         <AutenticadoContexto.Provider value={({LoginFuncionarios, autenticado, verificaToken})}>
             {children}
         </AutenticadoContexto.Provider>

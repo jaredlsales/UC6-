@@ -5,7 +5,8 @@ import {AutenticadoContexto} from "../Contexts/AuthContexts"
 
 export default function Login() {
 
-  const {LoginFuncionarios} = useContext(AutenticadoContexto)
+  const {LoginFuncionarios, verificaToken} = useContext(AutenticadoContexto)
+  verificaToken()
   
   const [email, setEmail] = useState("")
   const [senha, setSenha] = useState("")
