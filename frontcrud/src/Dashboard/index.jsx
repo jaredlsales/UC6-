@@ -1,5 +1,6 @@
 import {useState, useEffect, useContext} from "react"
 import {AutenticadoContexto} from "../Contexts/AuthContexts"
+import { Link } from "react-router-dom"
 
 export default function Dashboard() {
 
@@ -35,6 +36,7 @@ export default function Dashboard() {
             <div>
                 <h1>Dashboard Funcionarios</h1>
                 <h2>Seja Bem Vindo {nome.toUpperCase()}</h2>
+                 <Link to="/CadastrarProdutos">Cadastrar Produtos</Link> <br/>
                 <button type="button" class="btn btn-outline-primary me-2" onClick={(sairSistema)}>Out-Sair</button>
             </div>
         </>

@@ -2,6 +2,7 @@ import React from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Dashboard from "../Dashboard"
 import CabecalhoA from "../CabecalhoA"
+import CadastrarProdutos from "../CadastrarProdutos"
 
 //path="*" e usando para quando não encontrar vai para a pagina Dashboard 
 export default function Autenticados() {
@@ -11,6 +12,7 @@ export default function Autenticados() {
             <Routes>
                 <Route path="/" element={<Dashboard/>} />
                 <Route path="*" element={<Dashboard/>} />
+                <Route path="/CadastrarProdutos" element={<CadastrarProdutos/>} />
             </Routes>
         </BrowserRouter>
     )
