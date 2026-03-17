@@ -74,7 +74,7 @@ export default function AuthProvider({children}) {
 
     return(
         // exportando value={({LoginFuncionarios})}
-        <AutenticadoContexto.Provider value={({LoginFuncionarios, autenticado, verificaToken})}>
+        <AutenticadoContexto.Provider value={({LoginFuncionarios, autenticado, verificaToken, token})}>
             {children}
         </AutenticadoContexto.Provider>
     )

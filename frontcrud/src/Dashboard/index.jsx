@@ -35,9 +35,12 @@ export default function Dashboard() {
         <>
             <div>
                 <h1>Dashboard Funcionarios</h1>
-                <h2>Seja Bem Vindo {nome.toUpperCase()}</h2>
+                <h2>Seja Bem Vindo {nome.toUpperCase()}</h2> <br/>
                  <Link to="/CadastrarProdutos">Cadastrar Produtos</Link> <br/>
-                <button type="button" class="btn btn-outline-primary me-2" onClick={(sairSistema)}>Out-Sair</button>
+                 <br/>
+                 <Link to="/VisualizarProdutos">Visualizar Produtos</Link> <br/>
+                 <br/>
+                <button type="button" class="btn btn-outline-primary me-2" onClick={(sairSistema)}>Out-Sair</button> 
             </div>
         </>
     )
